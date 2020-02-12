@@ -1,0 +1,76 @@
+/* GENERAL STYLES */
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: monaco, Consolas, "Lucida Console", monospace;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+  color: #000000;
+  text-decoration: none;
+}
+
+/* UTILITIES */
+
+.App {
+  height: 100vh;
+  position: relative;
+}
+
+.content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.bottom {
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav {
+  margin-bottom: 2.5vh;
+}
+
+.nav ul {
+  list-style-type: none;
+}
+
+.nav li {
+  display: inline;
+  margin: 10px;
+}
+
+.footer ul {
+  list-style-type: none;
+}
+
+.footer li {
+  display: inline;
+  margin: 10px;
+}
+
+.email {
+  margin-bottom: 0.5vh;
+}
+
+.textWall {
+  text-align: justify;
+  justify-content: center;
+  line-height: 2em;
+}
+
+.logoStyle {
+  width: 20px;
+  height: 20px;
+}
