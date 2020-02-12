@@ -8,6 +8,14 @@ Install all node packages via yarn:
 
 `yarn`
 
+## Technologies
+
+- [React](https://reactjs.org/)
+
+### Specific
+
+- [Materialize](https://materializecss.com/)
+
 ## Resources 👏
 
-- N/A
+- [The Net Ninja - React, Redux & Firebase App Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9iWstfXntcj8f-dFZ4UtlN3)
