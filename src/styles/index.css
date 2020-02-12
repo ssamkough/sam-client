@@ -3,7 +3,8 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: monaco, Consolas, "Lucida Console", monospace;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 a:link,
@@ -20,57 +21,4 @@ a:active {
 .App {
   height: 100vh;
   position: relative;
-}
-
-.content {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.bottom {
-  position: fixed;
-  text-align: center;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.nav {
-  margin-bottom: 2.5vh;
-}
-
-.nav ul {
-  list-style-type: none;
-}
-
-.nav li {
-  display: inline;
-  margin: 10px;
-}
-
-.footer ul {
-  list-style-type: none;
-}
-
-.footer li {
-  display: inline;
-  margin: 10px;
-}
-
-.email {
-  margin-bottom: 0.5vh;
-}
-
-.textWall {
-  text-align: justify;
-  justify-content: center;
-  line-height: 2em;
-}
-
-.logoStyle {
-  width: 20px;
-  height: 20px;
 }
