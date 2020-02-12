@@ -14,6 +14,7 @@ Install all node packages via yarn:
 
 ### Specific
 
+- [Redux](https://redux.js.org/)
 - [Materialize](https://materializecss.com/)
 
 ## Resources 👏
