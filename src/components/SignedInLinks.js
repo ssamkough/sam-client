@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import AddPost from "./../pages/AddPost";
 
 const SignedInLinks = () => {
   return (
