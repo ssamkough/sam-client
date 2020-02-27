@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
 import firebase from "firebase";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
@@ -16,12 +15,11 @@ import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min.js";
 import "./styles/index.css";
 import App from "./App";
-import reducer from "./store/reducers/rootReducer";
+import rootReducer from "./store/reducers/rootReducer";
 import fbConfig from "./config/fbConfig";
-const rrfConfig = { userProfile: "users" }; // react-redux-firebase config
 
 const store = createStore(
-  reducer,
+  rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),
     reduxFirestore(firebase, fbConfig)
@@ -29,8 +27,8 @@ const store = createStore(
 );
 
 const rrfProps = {
-  fbConfig,
-  config: rrfConfig,
+  firebase,
+  config: fbConfig,
   dispatch: store.dispatch,
   createFirestoreInstance
 };
