@@ -15,7 +15,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={SignIn} />
             <Route path="/notebook" component={Notebook} />
-            <Route path="/post/:id" component={PostDetails} />
+            <Route path="/post/:path" component={PostDetails} />
             <Route path="/addpost" component={AddPost} />
           </Switch>
         </div>
