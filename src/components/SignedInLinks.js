@@ -19,11 +19,6 @@ const SignedInLinks = () => {
           Log Out
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/" className="btn btn-floating white black-text">
-          Initials
-        </NavLink>
-      </li>
     </ul>
   );
 };
