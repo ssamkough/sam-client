@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import PostList from "./../components/PostList";
 import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+
+import PostList from "./../components/PostList";
 
 class Notebook extends Component {
   render() {
@@ -8,7 +11,7 @@ class Notebook extends Component {
     return (
       <div className="dashboard container">
         <div className="row">
-          <div className="col s12 m6">
+          <div className="col s12 m12 l12">
             <PostList posts={posts} />
           </div>
         </div>
@@ -19,8 +22,11 @@ class Notebook extends Component {
 
 const mapStateToProps = state => {
   return {
-    posts: state.post.posts
+    posts: state.firestore.ordered.notebook
   };
 };
 
-export default connect(mapStateToProps)(Notebook);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "notebook" }])
+)(Notebook);
