@@ -3,7 +3,7 @@ import PostSummary from "./PostSummary";
 
 const PostList = ({ posts }) => {
   return (
-    <div className="post-list section">
+    <div className="post-list container">
       {posts &&
         posts.map(post => {
           return <PostSummary post={post} key={post.id} />;
