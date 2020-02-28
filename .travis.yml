@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "stable"
+script:
+  - yarn
+  - yarn build
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN
