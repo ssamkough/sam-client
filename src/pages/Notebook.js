@@ -2,12 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
-import PostList from "./../components/PostList";
+import PostList from "./../components/posts/PostList";
 
 class Notebook extends Component {
   render() {
-    const { posts } = this.props;
+    const { posts, auth } = this.props;
+    if (!auth.uid) {
+      return <Redirect to="/login" />;
+    }
+
     return (
       <div className="dashboard container">
         <div className="row">
@@ -22,11 +27,12 @@ class Notebook extends Component {
 
 const mapStateToProps = state => {
   return {
-    posts: state.firestore.ordered.notebook
+    posts: state.firestore.ordered.notebook,
+    auth: state.firebase.auth
   };
 };
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "notebook" }])
+  firestoreConnect([{ collection: "notebook", orderBy: ["timestamp", "desc"] }])
 )(Notebook);
