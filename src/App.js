@@ -4,9 +4,18 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import SignIn from "./pages/SignIn";
-import PostDetails from "./pages/PostDetails";
 import Notebook from "./pages/Notebook";
-import AddPost from "./pages/AddPost";
+import Projects from "./pages/Projects";
+import Services from "./pages/Services";
+import PostDetails from "./pages/PostDetails";
+import ProjectDetails from "./pages/ProjectDetails";
+import ServiceDetails from "./pages/ServiceDetails";
+import AddPost from "./pages/posts/AddPost";
+import AddProject from "./pages/projects/AddProject";
+import AddService from "./pages/services/AddService";
+import UpdatePost from "./pages/posts/UpdatePost";
+import UpdateProject from "./pages/projects/UpdateProject";
+import UpdateService from "./pages/services/UpdateService";
 
 class App extends Component {
   render() {
@@ -17,9 +26,18 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/login" component={SignIn} />
-            <Route path="/notebook" component={Notebook} />
-            <Route path="/post/:path" component={PostDetails} />
+            <Route exact path="/notebook" component={Notebook} />
+            <Route exact path="/projects" component={Projects} />
+            <Route exact path="/services" component={Services} />
+            <Route path="/notebook/:path" component={PostDetails} />
+            <Route path="/projects/:path" component={ProjectDetails} />
+            <Route path="/services/:path" component={ServiceDetails} />
             <Route path="/addpost" component={AddPost} />
+            <Route path="/addproject" component={AddProject} />
+            <Route path="/addservice" component={AddService} />
+            <Route path="/updatepost/:path" component={UpdatePost} />
+            <Route path="/updateproject/:path" component={UpdateProject} />
+            <Route path="/updateservice/:path" component={UpdateService} />
           </Switch>
         </div>
       </BrowserRouter>
