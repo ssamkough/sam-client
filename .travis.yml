@@ -8,4 +8,4 @@ script:
   - echo "Building project..."
   - yarn build
 after_success:
-  - firebase deploy --token $FIREBASE_TOKEN
+  - firebase deploy --token "$FIREBASE_TOKEN"
