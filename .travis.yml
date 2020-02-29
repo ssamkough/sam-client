@@ -3,6 +3,7 @@ node_js:
   - "stable"
 before_script:
   - cd functions && npm install
+  - cd ./../
 script:
   - echo "Stated deployment..."
   - echo "Installing dependencies..."
