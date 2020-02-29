@@ -26,7 +26,7 @@ a:active {
   text-transform: none;
 }
 
-.post-list {
+.entity-list {
   text-align: center;
   max-width: 40vw;
 }
@@ -35,4 +35,25 @@ a:active {
   margin-bottom: 2vh;
   border: solid white 1px;
   padding: 5px;
+}
+
+.tag-list li {
+  display: inline;
+  margin: 5px;
+}
+
+.add-entity {
+  margin-top: 2vh;
+}
+
+.entity-path-input {
+  display: none;
+}
+
+.href-button {
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
 }
