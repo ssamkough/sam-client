@@ -2,7 +2,10 @@ language: node_js
 node_js:
   - "stable"
 script:
+  - echo "Stated deployment..."
+  - echo "Installing dependencies..."
   - yarn
+  - echo "Building project..."
   - yarn build
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
