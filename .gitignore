@@ -1,9 +1,6 @@
 # directories
 /build
 
-# files
-src/config/fbConfig.js
-
 # dependencies
 /node_modules
 
