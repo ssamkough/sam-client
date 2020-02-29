@@ -26,6 +26,7 @@ class Notebook extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     posts: state.firestore.ordered.notebook,
     auth: state.firebase.auth,
@@ -37,6 +38,6 @@ export default compose(
   connect(mapStateToProps),
   firestoreConnect([
     { collection: "notebook" },
-    { collection: "notifications", limit: 5, orderBy: ["timestamp", "desc"] }
+    { collection: "notifications", limit: 5, orderBy: ["created_at", "desc"] }
   ])
 )(Notebook);
