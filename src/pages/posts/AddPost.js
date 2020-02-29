@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { addPost } from "./../store/actions/postActions";
+import { addPost } from "./../../store/actions/postActions";
 
 class AddPost extends Component {
   state = {
@@ -18,7 +18,7 @@ class AddPost extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addPost(this.state);
-    this.props.history.push("/");
+    this.props.history.push("/notebook");
   };
 
   render() {
@@ -44,12 +44,12 @@ class AddPost extends Component {
             />
           </div>
           <div className="input-field">
-            <label htmlFor="tags">Tags (separate with commas)</label>
+            <label htmlFor="tags">Tags (separate w/ commas)</label>
             <input type="text" id="tags" onChange={this.handleChange} />
           </div>
           <div className="input-field">
             <button className="btn black lighten-1 z-depth-0 ">
-              Post<i className="material-icons right">send</i>
+              Add<i className="material-icons right">send</i>
             </button>
           </div>
         </form>
