@@ -27,7 +27,7 @@ const PostDetails = props => {
     );
   } else {
     return (
-      <div className="container section">
+      <div className="container center">
         <p>Loading post...</p>
       </div>
     );
