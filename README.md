@@ -28,6 +28,14 @@ Build project:
 Deploy project:
 `firebase deploy`
 
+## CI/CD
+
+### [Travis CI](https://travis-ci.org/)
+
+Since we have Travis CI, we don't need to manually deploy to Firebase. Once we push to our branch, Travis gets triggered and builds our project and sends it to Firebase.
+
+If we create or remove a cloud function, there are extra steps that are necessary to build the application which is when we might need manually deploy our app.
+
 ## Technologies
 
 - [React](https://reactjs.org/)
