@@ -39,7 +39,6 @@ export const addProject = project => {
 export const updateProject = project => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    console.log(project);
 
     const projectRef = await firestore.collection("projects").doc(project.path);
     let updatedProjectObj = project;

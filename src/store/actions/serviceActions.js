@@ -39,7 +39,6 @@ export const addService = service => {
 export const updateService = service => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    console.log(service);
 
     const serviceRef = await firestore.collection("services").doc(service.path);
     let updatedServiceObj = service;

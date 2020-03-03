@@ -26,7 +26,6 @@ class Notebook extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     posts: state.firestore.ordered.notebook,
     auth: state.firebase.auth,
