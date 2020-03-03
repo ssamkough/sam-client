@@ -69,3 +69,39 @@ exports.serviceCreated = functions.firestore
 
     return createNotification(notification);
   });
+
+exports.articleCreated = functions.firestore
+  .document("articles/{articleId}")
+  .onCreate(doc => {
+    const article = doc.data();
+    const createdAt = admin.firestore.Timestamp.fromDate(new Date()).toDate();
+    const date = createdAt.toDateString();
+
+    const notification = {
+      type: "article",
+      title: `${article.title}`,
+      content: "Created a new article!",
+      date: date,
+      created_at: createdAt
+    };
+
+    return createNotification(notification);
+  });
+
+exports.personCreated = functions.firestore
+  .document("people/{personId}")
+  .onCreate(doc => {
+    const person = doc.data();
+    const createdAt = admin.firestore.Timestamp.fromDate(new Date()).toDate();
+    const date = createdAt.toDateString();
+
+    const notification = {
+      type: "person",
+      title: `${person.title}`,
+      content: "Added a new person!",
+      date: date,
+      created_at: createdAt
+    };
+
+    return createNotification(notification);
+  });
