@@ -5,11 +5,11 @@ import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
-import ServiceList from "../components/services/ServiceList";
+import ProjectList from "../../components/projects/ProjectList";
 
-class Services extends Component {
+class Projects extends Component {
   render() {
-    const { services, auth } = this.props;
+    const { projects, auth } = this.props;
     if (!auth.uid) {
       return <Redirect to="/login" />;
     }
@@ -18,12 +18,12 @@ class Services extends Component {
       <div className="dashboard container">
         <div className="row">
           <div className="col s10 m10 l10">
-            <ServiceList services={services} />
+            <ProjectList projects={projects} />
           </div>
           <div className="col s2 m2 l2">
-            <NavLink to="/addservice">
+            <NavLink to="/addproject">
               <button className="add-entity btn black lighten-1 z-depth-0 ">
-                Add Service<i className="material-icons right">send</i>
+                Add Project<i className="material-icons right">send</i>
               </button>
             </NavLink>
           </div>
@@ -34,9 +34,8 @@ class Services extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
   return {
-    services: state.firestore.ordered.services,
+    projects: state.firestore.ordered.projects,
     auth: state.firebase.auth
   };
 };
@@ -44,6 +43,6 @@ const mapStateToProps = state => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: "services", orderBy: ["created_at", "desc"] }
+    { collection: "projects", orderBy: ["created_at", "desc"] }
   ])
-)(Services);
+)(Projects);
