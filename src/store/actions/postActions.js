@@ -5,6 +5,11 @@ export const addPost = post => {
     const postPath = post.title.replace(/\s+/g, "-").toLowerCase();
     const createdAt = firestore.Timestamp.fromDate(new Date()).toDate();
     const date = createdAt.toDateString();
+    const snippet =
+      post.content
+        .split(" ")
+        .slice(0, 10)
+        .join(" ") + "...";
 
     let tagSet = new Set();
     post.tags = post.tags.split(/s*[s,]s*/);
@@ -19,6 +24,7 @@ export const addPost = post => {
 
     const postObj = {
       ...post,
+      snippet: snippet,
       path: postPath,
       created_at: createdAt,
       date: date
@@ -39,7 +45,6 @@ export const addPost = post => {
 export const updatePost = post => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    console.log(post);
 
     const postRef = await firestore.collection("notebook").doc(post.path);
     let updatedPostObj = post;
