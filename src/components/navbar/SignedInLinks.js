@@ -28,6 +28,16 @@ const SignedInLinks = props => {
         </NavLink>
       </li>
       <li>
+        <NavLink to="/articles" className="white-text">
+          Articles
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/people" className="white-text">
+          People
+        </NavLink>
+      </li>
+      <li>
         <button className="black white-text href-button" onClick={props.logout}>
           Log Out
         </button>
