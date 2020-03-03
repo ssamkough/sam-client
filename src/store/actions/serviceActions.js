@@ -7,7 +7,7 @@ export const addService = service => {
     const date = createdAt.toDateString();
 
     let tagSet = new Set();
-    service.tags = service.tags.split(/s*[s,]s*/);
+    service.tags = service.tags.split(/s*[,]s*/);
 
     service.tags.forEach(tag => {
       if (!tagSet.has(tag)) {

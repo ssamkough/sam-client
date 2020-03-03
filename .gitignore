@@ -1,6 +1,6 @@
 # directories
 /build
-/.firebase
+.firebase
 
 # dependencies
 /node_modules

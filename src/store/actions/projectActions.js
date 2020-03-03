@@ -7,7 +7,7 @@ export const addProject = project => {
     const date = createdAt.toDateString();
 
     let tagSet = new Set();
-    project.tags = project.tags.split(/s*[s,]s*/);
+    project.tags = project.tags.split(/s*[,]s*/);
 
     project.tags.forEach(tag => {
       if (!tagSet.has(tag)) {

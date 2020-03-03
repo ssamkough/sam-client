@@ -6,7 +6,7 @@ export const addArticle = article => {
     const date = createdAt.toDateString();
 
     let tagSet = new Set();
-    article.tags = article.tags.split(/s*[s,]s*/);
+    article.tags = article.tags.split(/s*[,]s*/);
 
     article.tags.forEach(tag => {
       if (!tagSet.has(tag)) {

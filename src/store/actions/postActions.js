@@ -12,7 +12,7 @@ export const addPost = post => {
         .join(" ") + "...";
 
     let tagSet = new Set();
-    post.tags = post.tags.split(/s*[s,]s*/);
+    post.tags = post.tags.split(/s*[,]s*/);
 
     post.tags.forEach(tag => {
       if (!tagSet.has(tag)) {
@@ -21,6 +21,8 @@ export const addPost = post => {
     });
 
     post.tags = Array.from(tagSet);
+
+    post.helpers = post.helpers.split(/s*[,]s*/);
 
     const postObj = {
       ...post,

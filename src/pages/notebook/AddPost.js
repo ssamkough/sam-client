@@ -44,6 +44,10 @@ class AddPost extends Component {
             />
           </div>
           <div className="input-field">
+            <label htmlFor="helpers">Helpers (separate w/ commas)</label>
+            <input type="text" id="helpers" onChange={this.handleChange} />
+          </div>
+          <div className="input-field">
             <label htmlFor="tags">Tags (separate w/ commas)</label>
             <input type="text" id="tags" onChange={this.handleChange} />
           </div>
