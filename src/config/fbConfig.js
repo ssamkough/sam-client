@@ -3,7 +3,7 @@ import "firebase/firestore";
 import "firebase/auth";
 
 const config = {
-  apiKey: "AIzaSyD9KQhiKfzNolNfa0JKAGTBrGQEVixoJ84",
+  apiKey: process.env.REACT_APP_FB_API_KEY,
   authDomain: "sam-api-267023.firebaseapp.com",
   databaseURL: "https://sam-api-267023.firebaseio.com",
   projectId: "sam-api-267023",
