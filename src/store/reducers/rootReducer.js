@@ -6,6 +6,8 @@ import authReducer from "./authReducer";
 import postReducer from "./postReducer";
 import projectReducer from "./projectReducer";
 import serviceReducer from "./serviceReducer";
+import articleReducer from "./articleReducer";
+import personReducer from "./personReducer";
 
 const rootReducer = combineReducers({
   firestore: firestoreReducer,
@@ -13,7 +15,9 @@ const rootReducer = combineReducers({
   auth: authReducer,
   post: postReducer,
   project: projectReducer,
-  service: serviceReducer
+  service: serviceReducer,
+  article: articleReducer,
+  person: personReducer
 });
 
 export default rootReducer;
