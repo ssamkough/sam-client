@@ -5,21 +5,29 @@ export const addService = service => {
     const servicePath = service.title.replace(/\s+/g, "-").toLowerCase();
     const createdAt = firestore.Timestamp.fromDate(new Date()).toDate();
     const date = createdAt.toDateString();
+    const snippet =
+      service.content
+        .split(" ")
+        .slice(0, 10)
+        .join(" ") + "...";
 
-    let tagSet = new Set();
-    service.tags = service.tags.split(/s*[,]s*/);
+    if (service.tags) {
+      let tagSet = new Set();
+      service.tags = service.tags.split(/s*[,]s*/);
 
-    service.tags.forEach(tag => {
-      if (!tagSet.has(tag)) {
-        tagSet.add(tag);
-      }
-    });
+      service.tags.forEach(tag => {
+        if (!tagSet.has(tag)) {
+          tagSet.add(tag);
+        }
+      });
 
-    service.tags = Array.from(tagSet);
+      service.tags = Array.from(tagSet);
+    }
 
     const serviceObj = {
       ...service,
       path: servicePath,
+      snippet: snippet,
       created_at: createdAt,
       date: date
     };
@@ -43,22 +51,16 @@ export const updateService = service => {
     const serviceRef = await firestore.collection("services").doc(service.path);
     let updatedServiceObj = service;
 
-    if (updatedServiceObj.tags) {
-      try {
-        let currTags = await serviceRef.get();
-        let arr = [...updatedServiceObj.tags, ...currTags.data().tags];
-        let tagSet = new Set();
+    service.snippet =
+      service.content
+        .split(" ")
+        .slice(0, 10)
+        .join(" ") + "...";
 
-        arr.forEach(tag => {
-          if (!tagSet.has(tag)) {
-            tagSet.add(tag);
-          }
-        });
-
-        updatedServiceObj.tags = Array.from(tagSet);
-      } catch (error) {
-        console.error("Error updating document:\n", error);
-      }
+    if (typeof updatedServiceObj.tags == "string") {
+      updatedServiceObj.tags = updatedServiceObj.tags
+        .replace(/\s/g, "")
+        .split(",");
     }
 
     updatedServiceObj.edited_at = firestore.Timestamp.fromDate(

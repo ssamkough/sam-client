@@ -5,21 +5,29 @@ export const addProject = project => {
     const projectPath = project.title.replace(/\s+/g, "-").toLowerCase();
     const createdAt = firestore.Timestamp.fromDate(new Date()).toDate();
     const date = createdAt.toDateString();
+    const snippet =
+      project.content
+        .split(" ")
+        .slice(0, 10)
+        .join(" ") + "...";
 
-    let tagSet = new Set();
-    project.tags = project.tags.split(/s*[,]s*/);
+    if (project.tags) {
+      let tagSet = new Set();
+      project.tags = project.tags.split(/s*[,]s*/);
 
-    project.tags.forEach(tag => {
-      if (!tagSet.has(tag)) {
-        tagSet.add(tag);
-      }
-    });
+      project.tags.forEach(tag => {
+        if (!tagSet.has(tag)) {
+          tagSet.add(tag);
+        }
+      });
 
-    project.tags = Array.from(tagSet);
+      project.tags = Array.from(tagSet);
+    }
 
     const projectObj = {
       ...project,
       path: projectPath,
+      snippet: snippet,
       created_at: createdAt,
       date: date
     };
@@ -43,22 +51,16 @@ export const updateProject = project => {
     const projectRef = await firestore.collection("projects").doc(project.path);
     let updatedProjectObj = project;
 
-    if (updatedProjectObj.tags) {
-      try {
-        let currTags = await projectRef.get();
-        let arr = [...updatedProjectObj.tags, ...currTags.data().tags];
-        let tagSet = new Set();
+    project.snippet =
+      project.content
+        .split(" ")
+        .slice(0, 10)
+        .join(" ") + "...";
 
-        arr.forEach(tag => {
-          if (!tagSet.has(tag)) {
-            tagSet.add(tag);
-          }
-        });
-
-        updatedProjectObj.tags = Array.from(tagSet);
-      } catch (error) {
-        console.error("Error updating document:\n", error);
-      }
+    if (typeof updatedProjectObj.tags == "string") {
+      updatedProjectObj.tags = updatedProjectObj.tags
+        .replace(/\s/g, "")
+        .split(",");
     }
 
     updatedProjectObj.edited_at = firestore.Timestamp.fromDate(
