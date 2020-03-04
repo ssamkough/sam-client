@@ -1,35 +1,36 @@
 import React from "react";
 
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
+
 const Notifications = props => {
   const { notifications } = props;
   return (
-    <div className="notifications-box">
-      <div className="card black">
-        <div className="card-content">
-          <span className="card-title white-text">
-            <b>Notifications</b>
-          </span>
-          <div className="notifications-list white-text">
-            {notifications &&
-              notifications.map(notification => {
-                return (
-                  <div className="notification" key={notification.id}>
-                    <p>
-                      <b>Type</b>: {notification.type}
-                    </p>
-                    <p>
-                      <b>Title</b>: {notification.title}
-                    </p>
-                    <p>
-                      <b>Date</b>: {notification.date}
-                    </p>
-                  </div>
-                );
-              })}
-          </div>
-        </div>
-      </div>
-    </div>
+    <Card>
+      <Card.Header>
+        <h3>Notifications</h3>
+      </Card.Header>
+      <Card.Body>
+        <ListGroup>
+          {notifications &&
+            notifications.map(notification => {
+              return (
+                <ListGroup.Item key={notification.id}>
+                  <Card.Title>{notification.type}</Card.Title>
+                  <Card.Text>
+                    <span className="font-weight-bold">Title:</span>{" "}
+                    {notification.title}
+                  </Card.Text>
+                  <Card.Text>
+                    <span className="font-weight-bold">Date:</span>{" "}
+                    {notification.date}
+                  </Card.Text>
+                </ListGroup.Item>
+              );
+            })}
+        </ListGroup>
+      </Card.Body>
+    </Card>
   );
 };
 
