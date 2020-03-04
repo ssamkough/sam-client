@@ -2,47 +2,37 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 import { logout } from "../../store/actions/authActions";
 
 const SignedInLinks = props => {
   return (
-    <ul className="right hide-on-med-and-down">
-      <li>
-        <NavLink to="/" className="white-text">
+    <Navbar.Collapse id="basic-navbar-nav">
+      <Nav className="ml-auto">
+        <Nav.Link as={NavLink} to="/" className="text-white">
           Dashboard
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/notebook" className="white-text">
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/notebook" className="text-white">
           Notebook
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/projects" className="white-text">
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/projects" className="text-white">
           Projects
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/services" className="white-text">
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/services" className="text-white">
           Services
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/articles" className="white-text">
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/articles" className="text-white">
           Articles
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/people" className="white-text">
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/people" className="text-white">
           People
-        </NavLink>
-      </li>
-      <li>
-        <button className="black white-text href-button" onClick={props.logout}>
+        </Nav.Link>
+        <Nav.Link onClick={props.logout} className="text-white">
           Log Out
-        </button>
-      </li>
-    </ul>
+        </Nav.Link>
+      </Nav>
+    </Navbar.Collapse>
   );
 };
 
