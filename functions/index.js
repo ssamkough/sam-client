@@ -3,10 +3,6 @@ const admin = require("firebase-admin");
 
 admin.initializeApp(functions.config().firebase);
 
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   response.send("Hello from Firebase!");
-// });
-
 const createNotification = async notification => {
   const doc = await admin
     .firestore()
@@ -97,7 +93,7 @@ exports.personCreated = functions.firestore
 
     const notification = {
       type: "person",
-      title: `${person.title}`,
+      title: `${person.first_name} ${person.last_name}`,
       content: "Added a new person!",
       date: date,
       created_at: createdAt
