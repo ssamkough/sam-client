@@ -15,6 +15,7 @@ class Notebook extends Component {
 
     return (
       <div className="dashboard container">
+        <br></br>
         <div className="row">
           <div className="col s4 m4 l4">
             <Notifications notifications={notifications} />
