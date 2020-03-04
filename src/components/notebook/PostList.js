@@ -1,14 +1,29 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import PostSummary from "./PostSummary";
 
 const PostList = ({ posts }) => {
   return (
-    <div className="entity-list container">
+    <Container>
+      <Row>
+        <Col>
+          <h3>Posts</h3>
+        </Col>
+      </Row>
       {posts &&
         posts.map(post => {
-          return <PostSummary post={post} key={post.id} />;
+          return (
+            <Row>
+              <Col>
+                <PostSummary post={post} key={post.id} /> <br />{" "}
+              </Col>
+            </Row>
+          );
         })}
-    </div>
+    </Container>
   );
 };
 

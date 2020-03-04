@@ -30,7 +30,7 @@ class Notebook extends Component {
               as={NavLink}
               to="/addpost"
               variant="outline-dark"
-              size="lg"
+              size="md"
               className="add-entity"
             >
               Add Post

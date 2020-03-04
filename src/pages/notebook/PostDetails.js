@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const PostDetails = props => {
   const { post, auth } = props;
@@ -12,24 +15,37 @@ const PostDetails = props => {
 
   if (post) {
     return (
-      <div className="container section">
-        <div className="card z-depth-0">
-          <div className="card-content">
-            <span className="card-title">{post.title}</span>
-            <p>{post.content}</p>
-          </div>
-          <div className="card-action grey lighten-4 grey-text">
-            <div>{post.tags}</div>
+      <Container>
+        <br />
+        <Row className="justify-content-center">
+          <Col md={8}>
+            <h3>{post.title}</h3>
+            <div>{post.content}</div>
+            <hr />
+            <div>
+              {post.tags &&
+                post.tags.map(tag => {
+                  return (
+                    <span post-tag={tag} key={tag.toString()}>
+                      {tag}{" "}
+                    </span>
+                  );
+                })}
+            </div>
             <div>{post.date}</div>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     );
   } else {
     return (
-      <div className="container center">
-        <p>Loading post...</p>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <p>Loading post...</p>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 };
