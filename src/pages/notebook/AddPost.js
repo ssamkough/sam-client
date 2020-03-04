@@ -13,6 +13,7 @@ class AddPost extends Component {
   state = {
     title: "",
     content: "",
+    helpers: "",
     tags: ""
   };
 

@@ -16,6 +16,7 @@ class UpdatePost extends Component {
     path: "",
     title: "",
     content: "",
+    helpers: "",
     tags: ""
   };
 
@@ -35,6 +36,7 @@ class UpdatePost extends Component {
         path: props.post.path,
         title: props.post.title,
         content: props.post.content,
+        helpers: props.post.helpers,
         tags: props.post.tags
       }));
     }
