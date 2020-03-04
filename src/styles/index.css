@@ -3,17 +3,15 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Candara, Arial, Helvetica, sans-serif;
 }
 
-a:link,
+/* a:link,
 a:visited,
 a:hover,
 a:focus,
 a:active {
-  color: #ffffff;
   text-decoration: none;
-}
+} */
 
 /* UTILITIES */
 
@@ -44,16 +42,4 @@ a:active {
 
 .add-entity {
   margin-top: 2vh;
-}
-
-.entity-path-input {
-  display: none;
-}
-
-.href-button {
-  font-size: 100%;
-  font-family: inherit;
-  border: 0;
-  padding: 0 15px;
-  cursor: pointer;
 }
