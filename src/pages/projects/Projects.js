@@ -4,8 +4,12 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
-import ProjectList from "../../components/projects/ProjectList";
+import ProjectList from "./../../components/projects/ProjectList";
 
 class Projects extends Component {
   render() {
@@ -15,20 +19,25 @@ class Projects extends Component {
     }
 
     return (
-      <div className="dashboard container">
-        <div className="row">
-          <div className="col s10 m10 l10">
+      <Container>
+        <br></br>
+        <Row>
+          <Col md={10}>
             <ProjectList projects={projects} />
-          </div>
-          <div className="col s2 m2 l2">
-            <NavLink to="/addproject">
-              <button className="add-entity btn black lighten-1 z-depth-0 ">
-                Add Project<i className="material-icons right">send</i>
-              </button>
-            </NavLink>
-          </div>
-        </div>
-      </div>
+          </Col>
+          <Col md={2}>
+            <Button
+              as={NavLink}
+              to="/addproject"
+              variant="outline-dark"
+              size="md"
+              className="add-entity"
+            >
+              Add Project
+            </Button>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

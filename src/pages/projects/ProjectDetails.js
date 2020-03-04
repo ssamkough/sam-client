@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const ProjectDetails = props => {
   const { project, auth } = props;
@@ -12,24 +15,37 @@ const ProjectDetails = props => {
 
   if (project) {
     return (
-      <div className="container section">
-        <div className="card z-depth-0">
-          <div className="card-content">
-            <span className="card-title">{project.title}</span>
-            <p>{project.content}</p>
-          </div>
-          <div className="card-action grey lighten-4 grey-text">
-            <div>{project.tags}</div>
+      <Container>
+        <br />
+        <Row className="justify-content-center">
+          <Col md={8}>
+            <h3>{project.title}</h3>
+            <div>{project.content}</div>
+            <hr />
+            <div>
+              {project.tags &&
+                project.tags.map(tag => {
+                  return (
+                    <span project-tag={tag} key={tag.toString()}>
+                      {tag}{" "}
+                    </span>
+                  );
+                })}
+            </div>
             <div>{project.date}</div>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     );
   } else {
     return (
-      <div className="container center">
-        <p>Loading project...</p>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <p>Loading project...</p>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 };

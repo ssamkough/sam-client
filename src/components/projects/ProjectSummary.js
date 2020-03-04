@@ -1,64 +1,65 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { destroyProject } from "./../../store/actions/projectActions";
 
 const ProjectSummary = props => {
   const { project } = props;
-
   return (
-    <div className="card black">
-      <div className="card-content">
-        <span className="card-title white-text">
-          <b>{project.title}</b>
-        </span>
-        <p className="white-text">{project.content}</p>
-        <br></br>
-        <div>
-          <Link to={"/project/" + project.path}>
-            <div className="waves-effect white black-text btn">
-              View Details
-            </div>
-          </Link>
-        </div>
-      </div>
-      <div className="card-action container">
-        <div className="row">
-          <div className="col s3 m3 l3">
-            <Link
-              to={{
-                pathname: "/updateproject/" + project.path,
-                state: project
-              }}
-            >
-              <div className="waves-effect white black-text btn">Update</div>
-            </Link>
-          </div>
-          <div className="col s6 m6 l6">
-            <p className="white-text">{project.date}</p>
-            <ul className="tag-list white-text">
+    <Card className="entity-card text-center">
+      <Card.Body>
+        <Card.Title>{project.title}</Card.Title>
+        <Card.Text>{project.snippet}</Card.Text>
+        <Button as={Link} to={"/projects/" + project.path} variant="primary">
+          View Details
+        </Button>
+      </Card.Body>
+      <Card.Footer className="text-muted">
+        <Container fluid>
+          <Row>
+            <Col>
               {project.tags &&
                 project.tags.map(tag => {
                   return (
-                    <li project-tag={tag} key={tag.toString()}>
-                      {tag}
-                    </li>
+                    <span project-tag={tag} key={tag.toString()}>
+                      {tag}{" "}
+                    </span>
                   );
                 })}
-            </ul>
-          </div>
-          <div className="col s3 m3 l3">
-            <button
-              onClick={() => props.destroyProject(props.project)}
-              className="waves-effect white black-text btn"
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Button
+                as={Link}
+                to={{
+                  pathname: "/updateproject/" + project.path,
+                  state: project
+                }}
+                variant="outline-dark"
+              >
+                Update
+              </Button>
+            </Col>
+            <Col md={6}>{project.date}</Col>
+            <Col md={3}>
+              <Button
+                onClick={() => props.destroyProject(project)}
+                variant="outline-dark"
+              >
+                Delete
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+      </Card.Footer>
+    </Card>
   );
 };
 

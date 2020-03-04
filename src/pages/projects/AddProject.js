@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
-import { addProject } from "./../../store/actions/projectActions";
+import { addProject } from "../../store/actions/projectActions";
 
 class AddProject extends Component {
   state = {
@@ -28,32 +33,45 @@ class AddProject extends Component {
     }
 
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Add Project</h5>
-          <div className="input-field">
-            <label htmlFor="title">Title</label>
-            <input type="text" id="title" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="content">Content</label>
-            <textarea
-              id="content"
-              onChange={this.handleChange}
-              className="materialize-textarea"
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="tags">Tags (separate w/ commas)</label>
-            <input type="text" id="tags" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <button className="btn black lighten-1 z-depth-0 ">
-              Add<i className="material-icons right">send</i>
-            </button>
-          </div>
-        </form>
-      </div>
+      <Container>
+        <br></br>
+        <Row>
+          <Col>
+            <Form onSubmit={this.handleSubmit}>
+              <h4>Add Project</h4>
+              <Form.Group controlId="title">
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Title"
+                  onChange={this.handleChange}
+                  required
+                />
+              </Form.Group>
+
+              <Form.Group controlId="content">
+                <Form.Label>Content</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Content"
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="tags">
+                <Form.Label>Tags</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Tags (separate w/ commas)"
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              <Button variant="dark" type="submit">
+                Add Project
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
