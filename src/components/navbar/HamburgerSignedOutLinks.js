@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const SignedOutLinks = () => {
+const HamburgerSignedOutLinks = () => {
   return (
-    <ul className="right hide-on-med-and-down">
+    <ul id="hamburger-menu" className="sidenav">
       <li>
         <NavLink to="/login" className="white-text">
           Login
@@ -13,4 +13,4 @@ const SignedOutLinks = () => {
   );
 };
 
-export default SignedOutLinks;
+export default HamburgerSignedOutLinks;

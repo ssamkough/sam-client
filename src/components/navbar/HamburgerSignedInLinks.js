@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 
 import { logout } from "../../store/actions/authActions";
 
-const SignedInLinks = props => {
+const HamburgerSignedInLinks = props => {
   return (
-    <ul className="right hide-on-med-and-down">
+    <ul className="sidenav" id="hamburger-menu">
       <li>
         <NavLink to="/" className="white-text">
           Dashboard
@@ -52,4 +52,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignedInLinks);
+export default connect(null, mapDispatchToProps)(HamburgerSignedInLinks);
