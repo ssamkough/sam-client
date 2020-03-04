@@ -12,7 +12,7 @@ const PostSummary = props => {
         <span className="card-title white-text">
           <b>{post.title}</b>
         </span>
-        <p className="white-text">{post.content}</p>
+        <p className="white-text">{post.snippet}</p>
         <br></br>
         <div>
           <Link to={"/post/" + post.path}>
