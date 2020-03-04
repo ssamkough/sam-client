@@ -6,9 +6,10 @@ import { addPerson } from "../../store/actions/personActions";
 
 class AddPerson extends Component {
   state = {
-    title: "",
-    content: "",
-    tags: ""
+    first_name: "",
+    last_name: "",
+    link: "",
+    description: ""
   };
 
   handleChange = e => {
@@ -32,12 +33,16 @@ class AddPerson extends Component {
         <form onSubmit={this.handleSubmit} className="white">
           <h5 className="grey-text text-darken-3">Add Person</h5>
           <div className="input-field">
-            <label htmlFor="firstName">First Name</label>
-            <input type="text" id="firstName" onChange={this.handleChange} />
+            <label htmlFor="first_name">First Name</label>
+            <input type="text" id="first_name" onChange={this.handleChange} />
           </div>
           <div className="input-field">
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" id="lastName" onChange={this.handleChange} />
+            <label htmlFor="last_name">Last Name</label>
+            <input type="text" id="last_name" onChange={this.handleChange} />
+          </div>
+          <div className="input-field">
+            <label htmlFor="link">Link</label>
+            <input type="text" id="link" onChange={this.handleChange} />
           </div>
           <div className="input-field">
             <label htmlFor="description">Description</label>
@@ -47,14 +52,6 @@ class AddPerson extends Component {
               maxLength="400"
               className="materialize-textarea"
             />
-          </div>
-          <div className="input-field">
-            <label htmlFor="link">Link</label>
-            <input type="text" id="link" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="tags">Tags (separate w/ commas)</label>
-            <input type="text" id="tags" onChange={this.handleChange} />
           </div>
           <div className="input-field">
             <button className="btn black lighten-1 z-depth-0 ">

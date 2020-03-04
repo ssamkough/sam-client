@@ -8,10 +8,11 @@ import { updatePerson } from "../../store/actions/personActions";
 
 class UpdatePerson extends Component {
   state = {
-    path: "",
-    title: "",
-    content: "",
-    tags: ""
+    id: "",
+    first_name: "",
+    last_name: "",
+    link: "",
+    description: ""
   };
 
   handleChange = e => {
@@ -27,16 +28,17 @@ class UpdatePerson extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       this.setState((state, props) => ({
-        path: props.person.path,
-        title: props.person.title,
-        content: props.person.content,
-        tags: props.person.tags
+        id: props.match.params.id,
+        first_name: props.person.first_name,
+        last_name: props.person.last_name,
+        description: props.person.description,
+        link: props.person.tags
       }));
     }
   }
 
   render() {
-    const { auth, person } = this.props;
+    const { auth, person, match } = this.props;
     if (!auth.uid) {
       return <Redirect to="/login" />;
     }
@@ -47,31 +49,50 @@ class UpdatePerson extends Component {
           <form onSubmit={this.handleSubmit} className="white">
             <h5 className="grey-text text-darken-3">Update Person</h5>
             <div className="entity-path-input input-field">
-              <input disabled type="text" id="path" value={person.path} />
+              <input disabled type="text" id="id" value={match.params.id} />
             </div>
             <div className="input-field">
-              <input disabled type="text" id="title" value={person.title} />
-            </div>
-            <div className="input-field">
-              <label htmlFor="content" className="active">
-                Content
-              </label>
-              <textarea
-                id="content"
-                onChange={this.handleChange}
-                className="materialize-textarea"
-                defaultValue={person.content}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="tags" className="active">
-                Tags (separate w/ commas)
+              <label htmlFor="first_name" className="active">
+                First Name
               </label>
               <input
                 type="text"
-                id="tags"
+                id="first_name"
                 onChange={this.handleChange}
-                defaultValue={person.tags}
+                defaultValue={person.first_name}
+              />
+            </div>
+            <div className="input-field">
+              <label htmlFor="last_name" className="active">
+                Last Name
+              </label>
+              <input
+                type="text"
+                id="last_name"
+                onChange={this.handleChange}
+                defaultValue={person.last_name}
+              />
+            </div>
+            <div className="input-field">
+              <label htmlFor="link" className="active">
+                Link
+              </label>
+              <input
+                type="text"
+                id="link"
+                onChange={this.handleChange}
+                defaultValue={person.link}
+              />
+            </div>
+            <div className="input-field">
+              <label htmlFor="description" className="active">
+                Description
+              </label>
+              <textarea
+                id="description"
+                onChange={this.handleChange}
+                className="materialize-textarea"
+                defaultValue={person.description}
               />
             </div>
             <div className="input-field">
@@ -93,9 +114,9 @@ class UpdatePerson extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const path = ownProps.match.params.path;
+  const id = ownProps.match.params.id;
   const people = state.firestore.data.people;
-  const person = people ? people[path] : null;
+  const person = people ? people[id] : null;
 
   return {
     person: person,
