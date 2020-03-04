@@ -1,64 +1,65 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { destroyService } from "./../../store/actions/serviceActions";
 
 const ServiceSummary = props => {
   const { service } = props;
-
   return (
-    <div className="card black">
-      <div className="card-content">
-        <span className="card-title white-text">
-          <b>{service.title}</b>
-        </span>
-        <p className="white-text">{service.content}</p>
-        <br></br>
-        <div>
-          <Link to={"/service/" + service.path}>
-            <div className="waves-effect white black-text btn">
-              View Details
-            </div>
-          </Link>
-        </div>
-      </div>
-      <div className="card-action container">
-        <div className="row">
-          <div className="col s3 m3 l3">
-            <Link
-              to={{
-                pathname: "/updateservice/" + service.path,
-                state: service
-              }}
-            >
-              <div className="waves-effect white black-text btn">Update</div>
-            </Link>
-          </div>
-          <div className="col s6 m6 l6">
-            <p className="white-text">{service.date}</p>
-            <ul className="tag-list white-text">
+    <Card className="entity-card text-center">
+      <Card.Body>
+        <Card.Title>{service.title}</Card.Title>
+        <Card.Text>{service.snippet}</Card.Text>
+        <Button as={Link} to={"/services/" + service.path} variant="primary">
+          View Details
+        </Button>
+      </Card.Body>
+      <Card.Footer className="text-muted">
+        <Container fluid>
+          <Row>
+            <Col>
               {service.tags &&
                 service.tags.map(tag => {
                   return (
-                    <li service-tag={tag} key={tag.toString()}>
-                      {tag}
-                    </li>
+                    <span service-tag={tag} key={tag.toString()}>
+                      {tag}{" "}
+                    </span>
                   );
                 })}
-            </ul>
-          </div>
-          <div className="col s3 m3 l3">
-            <button
-              onClick={() => props.destroyService(props.service)}
-              className="waves-effect white black-text btn"
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Button
+                as={Link}
+                to={{
+                  pathname: "/updateservice/" + service.path,
+                  state: service
+                }}
+                variant="outline-dark"
+              >
+                Update
+              </Button>
+            </Col>
+            <Col md={6}>{service.date}</Col>
+            <Col md={3}>
+              <Button
+                onClick={() => props.destroyService(service)}
+                variant="outline-dark"
+              >
+                Delete
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+      </Card.Footer>
+    </Card>
   );
 };
 

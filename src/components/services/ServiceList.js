@@ -1,14 +1,29 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import ServiceSummary from "./ServiceSummary";
 
 const ServiceList = ({ services }) => {
   return (
-    <div className="entity-list container">
+    <Container>
+      <Row>
+        <Col>
+          <h3>Services</h3>
+        </Col>
+      </Row>
       {services &&
         services.map(service => {
-          return <ServiceSummary service={service} key={service.id} />;
+          return (
+            <Row>
+              <Col>
+                <ServiceSummary service={service} key={service.id} /> <br />{" "}
+              </Col>
+            </Row>
+          );
         })}
-    </div>
+    </Container>
   );
 };
 
