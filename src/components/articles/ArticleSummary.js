@@ -12,22 +12,15 @@ const ArticleSummary = props => {
         <span className="card-title white-text">
           <b>{article.title}</b>
         </span>
-        <p className="white-text">{article.content}</p>
+        <p className="white-text">{article.description}</p>
         <br></br>
-        <div>
-          <Link to={"/article/" + article.path}>
-            <div className="waves-effect white black-text btn">
-              View Details
-            </div>
-          </Link>
-        </div>
       </div>
       <div className="card-action container">
         <div className="row">
           <div className="col s3 m3 l3">
             <Link
               to={{
-                pathname: "/updatearticle/" + article.path,
+                pathname: "/updatearticle/" + article.id,
                 state: article
               }}
             >

@@ -10,6 +10,7 @@ export const addPerson = person => {
       created_at: createdAt,
       date: date
     };
+    console.log(personObj);
 
     try {
       await firestore.collection("people").add(personObj);

@@ -6,8 +6,14 @@ import { addArticle } from "../../store/actions/articleActions";
 
 class AddArticle extends Component {
   state = {
+    link: "",
     title: "",
-    content: "",
+    author_first_name: "",
+    author_last_name: "",
+    website: "",
+    publisher: "",
+    publication_date: "",
+    description: "",
     tags: ""
   };
 
@@ -40,18 +46,18 @@ class AddArticle extends Component {
             <input type="text" id="title" onChange={this.handleChange} />
           </div>
           <div className="input-field">
-            <label htmlFor="authorFirstName">Author's First Name</label>
+            <label htmlFor="author_first_name">Author's First Name</label>
             <input
               type="text"
-              id="authorFirstName"
+              id="author_first_name"
               onChange={this.handleChange}
             />
           </div>
           <div className="input-field">
-            <label htmlFor="authorLastName">Author's Last Name</label>
+            <label htmlFor="author_last_name">Author's Last Name</label>
             <input
               type="text"
-              id="authorLastName"
+              id="author_last_name"
               onChange={this.handleChange}
             />
           </div>
@@ -64,10 +70,10 @@ class AddArticle extends Component {
             <input type="text" id="publisher" onChange={this.handleChange} />
           </div>
           <div className="input-field">
-            <label htmlFor="publicationDate">Publication Date</label>
+            <label htmlFor="publication_date">Publication Date</label>
             <input
               type="text"
-              id="publicationDate"
+              id="publication_date"
               onChange={this.handleChange}
             />
           </div>

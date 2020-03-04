@@ -8,9 +8,15 @@ import { updateArticle } from "../../store/actions/articleActions";
 
 class UpdateArticle extends Component {
   state = {
-    path: "",
+    id: "",
+    link: "",
     title: "",
-    content: "",
+    author_first_name: "",
+    author_last_name: "",
+    website: "",
+    publisher: "",
+    publication_date: "",
+    description: "",
     tags: ""
   };
 
@@ -27,9 +33,15 @@ class UpdateArticle extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
       this.setState((state, props) => ({
-        path: props.article.path,
+        id: props.match.params.id,
+        link: props.article.link,
         title: props.article.title,
-        content: props.article.content,
+        author_first_name: props.article.author_first_name,
+        author_last_name: props.article.author_last_name,
+        website: props.article.website,
+        publisher: props.article.publisher,
+        publication_date: props.article.publication_date,
+        description: props.article.description,
         tags: props.article.tags
       }));
     }
@@ -47,20 +59,94 @@ class UpdateArticle extends Component {
           <form onSubmit={this.handleSubmit} className="white">
             <h5 className="grey-text text-darken-3">Update Article</h5>
             <div className="entity-path-input input-field">
-              <input disabled type="text" id="path" value={article.path} />
+              <input disabled type="text" id="id" value={article.id} />
             </div>
             <div className="input-field">
-              <input disabled type="text" id="title" value={article.title} />
+              <label htmlFor="link" className="active">
+                Link
+              </label>
+              <input
+                type="text"
+                id="link"
+                onChange={this.handleChange}
+                defaultValue={article.link}
+              />
             </div>
             <div className="input-field">
-              <label htmlFor="content" className="active">
-                Content
+              <label htmlFor="title" className="active">
+                Title
+              </label>
+              <input
+                type="text"
+                id="title"
+                onChange={this.handleChange}
+                defaultValue={article.title}
+              />
+            </div>
+            <div className="input-field">
+              <label htmlFor="author_first_name" className="active">
+                Author's First Name
+              </label>
+              <input
+                type="text"
+                id="author_first_name"
+                onChange={this.handleChange}
+                defaultValue={article.author_first_name}
+              />
+            </div>
+            <div className="input-field">
+              <label htmlFor="author_last_name" className="active">
+                Author's Last Name
+              </label>
+              <input
+                type="text"
+                id="author_last_name"
+                onChange={this.handleChange}
+                defaultValue={article.author_last_name}
+              />
+            </div>
+            <div className="input-field">
+              <label htmlFor="website" className="active">
+                Website
+              </label>
+              <input
+                type="text"
+                id="website"
+                onChange={this.handleChange}
+                defaultValue={article.website}
+              />
+            </div>
+            <div className="input-field">
+              <label htmlFor="publisher" className="active">
+                Publisher
+              </label>
+              <input
+                type="text"
+                id="publisher"
+                onChange={this.handleChange}
+                defaultValue={article.publisher}
+              />
+            </div>
+            <div className="input-field">
+              <label htmlFor="publication_date" className="active">
+                Publication Date
+              </label>
+              <input
+                type="text"
+                id="publication_date"
+                onChange={this.handleChange}
+                defaultValue={article.publication_date}
+              />
+            </div>
+            <div className="input-field">
+              <label htmlFor="description" className="active">
+                Description
               </label>
               <textarea
-                id="content"
+                id="description"
                 onChange={this.handleChange}
                 className="materialize-textarea"
-                defaultValue={article.content}
+                defaultValue={article.description}
               />
             </div>
             <div className="input-field">
@@ -93,9 +179,9 @@ class UpdateArticle extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const path = ownProps.match.params.path;
+  const id = ownProps.match.params.id;
   const articles = state.firestore.data.articles;
-  const article = articles ? articles[path] : null;
+  const article = articles ? articles[id] : null;
 
   return {
     article: article,
