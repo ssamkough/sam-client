@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
+import NavigationBar from "./components/NavigationBar";
 import Dashboard from "./pages/Dashboard";
 import SignIn from "./pages/SignIn";
 import Notebook from "./pages/notebook/Notebook";
@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="app">
-          <Navbar />
+          <NavigationBar />
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/login" component={SignIn} />
