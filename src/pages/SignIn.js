@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Badge from "react-bootstrap/Badge";
 import { login } from "./../store/actions/authActions";
 
 class SignIn extends Component {
@@ -26,27 +32,45 @@ class SignIn extends Component {
     }
 
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Sign In</h5>
-          <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <button className="btn black lighten-1 z-depth-0 ">
-              Login <i className="material-icons right">send</i>
-            </button>
-            <div className="red-text center">
-              {authError ? <p>{authError}</p> : null}
-            </div>
-          </div>
-        </form>
-      </div>
+      <Container>
+        <br></br>
+        <Row>
+          <Col>
+            <h4>Login</h4>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Group controlId="email">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Email"
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              <Button variant="dark" type="submit">
+                Login
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+        {authError ? (
+          <Row>
+            <Col className="text-center">
+              <h4>
+                <Badge variant="danger">{authError}</Badge>
+              </h4>
+            </Col>
+          </Row>
+        ) : null}
+      </Container>
     );
   }
 }

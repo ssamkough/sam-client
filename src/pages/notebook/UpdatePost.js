@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 import { updatePost } from "./../../store/actions/postActions";
 
@@ -43,50 +48,64 @@ class UpdatePost extends Component {
 
     if (post) {
       return (
-        <div className="container">
-          <form onSubmit={this.handleSubmit} className="white">
-            <h5 className="grey-text text-darken-3">Update Post</h5>
-            <div className="entity-path-input input-field">
-              <input disabled type="text" id="path" value={post.path} />
-            </div>
-            <div className="input-field">
-              <input disabled type="text" id="title" value={post.title} />
-            </div>
-            <div className="input-field">
-              <label htmlFor="content" className="active">
-                Content
-              </label>
-              <textarea
-                id="content"
-                onChange={this.handleChange}
-                className="materialize-textarea"
-                defaultValue={post.content}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="tags" className="active">
-                Tags (separate w/ commas)
-              </label>
-              <input
-                type="text"
-                id="tags"
-                onChange={this.handleChange}
-                defaultValue={post.tags}
-              />
-            </div>
-            <div className="input-field">
-              <button className="btn black lighten-1 z-depth-0 ">
-                Update<i className="material-icons right">send</i>
-              </button>
-            </div>
-          </form>
-        </div>
+        <Container>
+          <br></br>
+          <Row>
+            <Col>
+              <Form onSubmit={this.handleSubmit}>
+                <h4>Update Post</h4>
+                <Form.Group controlId="path">
+                  <Form.Label>Path</Form.Label>
+                  <Form.Control disabled value={post.path} />
+                </Form.Group>
+
+                <Form.Group controlId="title">
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control disabled value={post.title} />
+                </Form.Group>
+
+                <Form.Group controlId="content">
+                  <Form.Label>Content</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Content"
+                    onChange={this.handleChange}
+                    defaultValue={post.content}
+                  />
+                </Form.Group>
+                <Form.Group controlId="helpers">
+                  <Form.Label>Helpers</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Helpers (separate w/ commas)"
+                    onChange={this.handleChange}
+                    defaultValue={post.helpers}
+                  />
+                </Form.Group>
+                <Form.Group controlId="tags">
+                  <Form.Label>Tags</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Tags (separate w/ commas)"
+                    onChange={this.handleChange}
+                    defaultValue={post.tags}
+                  />
+                </Form.Group>
+                <Button variant="dark" type="submit">
+                  Update Post
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+        </Container>
       );
     } else {
       return (
-        <div className="container center">
-          <p>Loading post...</p>
-        </div>
+        <Container>
+          <Row>
+            <Col>Loading post...</Col>
+          </Row>
+        </Container>
       );
     }
   }
