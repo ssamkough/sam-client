@@ -12,7 +12,7 @@ export const addPost = post => {
         .join(" ") + "...";
 
     let tagSet = new Set();
-    post.tags = post.tags.split(/s*[,]s*/);
+    post.tags = post.tags.replace(/\s/g, "").split(",");
 
     post.tags.forEach(tag => {
       if (!tagSet.has(tag)) {
@@ -21,8 +21,10 @@ export const addPost = post => {
     });
 
     post.tags = Array.from(tagSet);
-
-    post.helpers = post.helpers.split(/s*[,]s*/);
+    console.log(post.tags);
+    if (post.helpers) {
+      post.helpers = post.helpers.replace(/\s/g, "").split(",");
+    }
 
     const postObj = {
       ...post,
@@ -51,22 +53,20 @@ export const updatePost = post => {
     const postRef = await firestore.collection("notebook").doc(post.path);
     let updatedPostObj = post;
 
-    if (updatedPostObj.tags) {
-      try {
-        let currTags = await postRef.get();
-        let arr = [...updatedPostObj.tags, ...currTags.data().tags];
-        let tagSet = new Set();
+    post.snippet =
+      post.content
+        .split(" ")
+        .slice(0, 10)
+        .join(" ") + "...";
 
-        arr.forEach(tag => {
-          if (!tagSet.has(tag)) {
-            tagSet.add(tag);
-          }
-        });
+    if (typeof updatedPostObj.helpers == "string") {
+      updatedPostObj.helpers = updatedPostObj.helpers
+        .replace(/\s/g, "")
+        .split(",");
+    }
 
-        updatedPostObj.tags = Array.from(tagSet);
-      } catch (error) {
-        console.error("Error updating document:\n", error);
-      }
+    if (typeof updatedPostObj.tags == "string") {
+      updatedPostObj.tags = updatedPostObj.tags.replace(/\s/g, "").split(",");
     }
 
     updatedPostObj.edited_at = firestore.Timestamp.fromDate(
