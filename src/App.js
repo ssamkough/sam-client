@@ -48,8 +48,8 @@ class App extends Component {
             <Route path="/updatepost/:path" component={UpdatePost} />
             <Route path="/updateproject/:path" component={UpdateProject} />
             <Route path="/updateservice/:path" component={UpdateService} />
-            <Route path="/updateservice/:id" component={UpdateArticle} />
-            <Route path="/updateservice/:id" component={UpdatePerson} />
+            <Route path="/updatearticle/:id" component={UpdateArticle} />
+            <Route path="/updateperson/:id" component={UpdatePerson} />
           </Switch>
         </div>
       </BrowserRouter>
