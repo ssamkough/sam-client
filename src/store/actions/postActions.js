@@ -11,17 +11,19 @@ export const addPost = post => {
         .slice(0, 10)
         .join(" ") + "...";
 
-    let tagSet = new Set();
-    post.tags = post.tags.replace(/\s/g, "").split(",");
+    if (post.tags) {
+      let tagSet = new Set();
+      post.tags = post.tags.replace(/\s/g, "").split(",");
 
-    post.tags.forEach(tag => {
-      if (!tagSet.has(tag)) {
-        tagSet.add(tag);
-      }
-    });
+      post.tags.forEach(tag => {
+        if (!tagSet.has(tag)) {
+          tagSet.add(tag);
+        }
+      });
 
-    post.tags = Array.from(tagSet);
-    console.log(post.tags);
+      post.tags = Array.from(tagSet);
+    }
+
     if (post.helpers) {
       post.helpers = post.helpers.replace(/\s/g, "").split(",");
     }
@@ -59,14 +61,14 @@ export const updatePost = post => {
         .slice(0, 10)
         .join(" ") + "...";
 
+    if (typeof updatedPostObj.tags == "string") {
+      updatedPostObj.tags = updatedPostObj.tags.replace(/\s/g, "").split(",");
+    }
+
     if (typeof updatedPostObj.helpers == "string") {
       updatedPostObj.helpers = updatedPostObj.helpers
         .replace(/\s/g, "")
         .split(",");
-    }
-
-    if (typeof updatedPostObj.tags == "string") {
-      updatedPostObj.tags = updatedPostObj.tags.replace(/\s/g, "").split(",");
     }
 
     updatedPostObj.edited_at = firestore.Timestamp.fromDate(
