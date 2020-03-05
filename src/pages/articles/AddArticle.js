@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 import { addArticle } from "../../store/actions/articleActions";
 
@@ -34,69 +39,59 @@ class AddArticle extends Component {
     }
 
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Add Article</h5>
-          <div className="input-field">
-            <label htmlFor="link">Link</label>
-            <input type="text" id="link" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="title">Title</label>
-            <input type="text" id="title" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="author_first_name">Author's First Name</label>
-            <input
-              type="text"
-              id="author_first_name"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="author_last_name">Author's Last Name</label>
-            <input
-              type="text"
-              id="author_last_name"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="website">Website</label>
-            <input type="text" id="website" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="publisher">Publisher</label>
-            <input type="text" id="publisher" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="publication_date">Publication Date</label>
-            <input
-              type="text"
-              id="publication_date"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="description">Description</label>
-            <textarea
-              id="description"
-              onChange={this.handleChange}
-              maxLength="400"
-              className="materialize-textarea"
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="tags">Tags (separate w/ commas)</label>
-            <input type="text" id="tags" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <button className="btn black lighten-1 z-depth-0 ">
-              Add<i className="material-icons right">send</i>
-            </button>
-          </div>
-        </form>
-      </div>
+      <Container>
+        <br></br>
+        <Row>
+          <Col>
+            <Form onSubmit={this.handleSubmit}>
+              <h4>Add Article</h4>
+              <Form.Group controlId="link">
+                <Form.Label>Link</Form.Label>
+                <Form.Control
+                  type="text"
+                  onChange={this.handleChange}
+                  required
+                />
+              </Form.Group>
+              <Form.Group controlId="title">
+                <Form.Label>Title</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group controlId="author_first_name">
+                <Form.Label>Author's First Name</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group controlId="author_last_name">
+                <Form.Label>Author's Last Name</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group controlId="website">
+                <Form.Label>Website</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group controlId="publisher">
+                <Form.Label>Publisher</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group controlId="publication_date">
+                <Form.Label>Publication Date</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group controlId="description">
+                <Form.Label>Description</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group controlId="tags">
+                <Form.Label>Tags (separate w/ commas)</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
+              </Form.Group>
+              <Button variant="dark" type="submit">
+                Add Article
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

@@ -1,56 +1,61 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { destroyArticle } from "../../store/actions/articleActions";
 
 const ArticleSummary = props => {
   const { article } = props;
   return (
-    <div className="card black">
-      <div className="card-content">
-        <span className="card-title white-text">
-          <b>{article.title}</b>
-        </span>
-        <p className="white-text">{article.description}</p>
-        <br></br>
-      </div>
-      <div className="card-action container">
-        <div className="row">
-          <div className="col s3 m3 l3">
-            <Link
-              to={{
-                pathname: "/updatearticle/" + article.id,
-                state: article
-              }}
-            >
-              <div className="waves-effect white black-text btn">Update</div>
-            </Link>
-          </div>
-          <div className="col s6 m6 l6">
-            <p className="white-text">{article.date}</p>
-            <ul className="tag-list white-text">
+    <Card className="entity-card text-center">
+      <Card.Body>
+        <Card.Title>{article.title}</Card.Title>
+      </Card.Body>
+      <Card.Footer className="text-muted">
+        <Container fluid>
+          <Row>
+            <Col>
               {article.tags &&
                 article.tags.map(tag => {
                   return (
-                    <li article-tag={tag} key={tag.toString()}>
-                      {tag}
-                    </li>
+                    <span article-tag={tag} key={tag.toString()}>
+                      {tag}{" "}
+                    </span>
                   );
                 })}
-            </ul>
-          </div>
-          <div className="col s3 m3 l3">
-            <button
-              onClick={() => props.destroyArticle(props.article)}
-              className="waves-effect white black-text btn"
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <Button
+                as={Link}
+                to={{
+                  pathname: "/updatearticle/" + article.id,
+                  state: article
+                }}
+                variant="outline-dark"
+              >
+                Update
+              </Button>
+            </Col>
+            <Col md={6}>{article.date}</Col>
+            <Col md={3}>
+              <Button
+                onClick={() => props.destroyArticle(article)}
+                variant="outline-dark"
+              >
+                Delete
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+      </Card.Footer>
+    </Card>
   );
 };
 
