@@ -18,6 +18,13 @@ a:active {
 .app {
   height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1 0 auto;
+  padding: 20px;
 }
 
 .btn {
@@ -42,4 +49,17 @@ a:active {
 
 .add-entity {
   margin-top: 2vh;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
+.footer li {
+  display: inline;
+}
+
+.contact {
+  margin-top: 1rem;
+  margin-left: 1rem;
 }
