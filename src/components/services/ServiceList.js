@@ -16,9 +16,9 @@ const ServiceList = ({ services }) => {
       {services &&
         services.map(service => {
           return (
-            <Row>
-              <Col>
-                <ServiceSummary service={service} key={service.id} /> <br />{" "}
+            <Row key={service.path}>
+              <Col key={service.path}>
+                <ServiceSummary key={service.path} service={service} /> <br />{" "}
               </Col>
             </Row>
           );

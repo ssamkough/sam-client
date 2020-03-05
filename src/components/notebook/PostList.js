@@ -16,9 +16,9 @@ const PostList = ({ posts }) => {
       {posts &&
         posts.map(post => {
           return (
-            <Row>
-              <Col>
-                <PostSummary post={post} key={post.id} /> <br />{" "}
+            <Row key={post.path}>
+              <Col key={post.path}>
+                <PostSummary key={post.path} post={post} /> <br />{" "}
               </Col>
             </Row>
           );
