@@ -60,35 +60,30 @@ class UpdatePost extends Component {
                   <Form.Label>Path</Form.Label>
                   <Form.Control disabled value={post.path} />
                 </Form.Group>
-
                 <Form.Group controlId="title">
                   <Form.Label>Title</Form.Label>
                   <Form.Control disabled value={post.title} />
                 </Form.Group>
-
                 <Form.Group controlId="content">
                   <Form.Label>Content</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Content"
                     onChange={this.handleChange}
                     defaultValue={post.content}
                   />
                 </Form.Group>
                 <Form.Group controlId="helpers">
-                  <Form.Label>Helpers</Form.Label>
+                  <Form.Label>Helpers (separate w/ commas)</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Helpers (separate w/ commas)"
                     onChange={this.handleChange}
                     defaultValue={post.helpers}
                   />
                 </Form.Group>
                 <Form.Group controlId="tags">
-                  <Form.Label>Tags</Form.Label>
+                  <Form.Label>Tags (separate w/ commas)</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Tags (separate w/ commas)"
                     onChange={this.handleChange}
                     defaultValue={post.tags}
                   />

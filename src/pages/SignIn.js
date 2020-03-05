@@ -40,20 +40,12 @@ class SignIn extends Component {
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId="email">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Email"
-                  onChange={this.handleChange}
-                />
+                <Form.Control type="email" onChange={this.handleChange} />
               </Form.Group>
 
               <Form.Group controlId="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  onChange={this.handleChange}
-                />
+                <Form.Control type="password" onChange={this.handleChange} />
               </Form.Group>
               <Button variant="dark" type="submit">
                 Login

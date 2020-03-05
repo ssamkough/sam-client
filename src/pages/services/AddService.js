@@ -43,27 +43,17 @@ class AddService extends Component {
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Title"
                   onChange={this.handleChange}
                   required
                 />
               </Form.Group>
-
               <Form.Group controlId="content">
                 <Form.Label>Content</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Content"
-                  onChange={this.handleChange}
-                />
+                <Form.Control type="text" onChange={this.handleChange} />
               </Form.Group>
               <Form.Group controlId="tags">
-                <Form.Label>Tags</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Tags (separate w/ commas)"
-                  onChange={this.handleChange}
-                />
+                <Form.Label>Tags (separate w/ commas)</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
               </Form.Group>
               <Button variant="dark" type="submit">
                 Add Service
