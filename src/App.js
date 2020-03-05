@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import NavigationBar from "./components/NavigationBar";
+import Footer from "./components/Footer";
 import Dashboard from "./pages/Dashboard";
 import SignIn from "./pages/SignIn";
 import Notebook from "./pages/notebook/Notebook";
@@ -51,6 +52,7 @@ class App extends Component {
             <Route path="/updatearticle/:id" component={UpdateArticle} />
             <Route path="/updateperson/:id" component={UpdatePerson} />
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     );
