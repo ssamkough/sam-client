@@ -65,16 +65,6 @@ class UpdatePost extends Component {
                   <Form.Label>Title</Form.Label>
                   <Form.Control disabled value={post.title} />
                 </Form.Group>
-
-                <Form.Group controlId="content">
-                  <Form.Label>Content</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Content"
-                    onChange={this.handleChange}
-                    defaultValue={post.content}
-                  />
-                </Form.Group>
                 <Form.Group controlId="helpers">
                   <Form.Label>
                     Helpers (separate w/ commas (don't put spaces))
@@ -95,6 +85,17 @@ class UpdatePost extends Component {
                     placeholder="Tags (separate w/ commas (don't put spaces))"
                     onChange={this.handleChange}
                     defaultValue={post.tags}
+                  />
+                </Form.Group>
+                <Form.Group controlId="content">
+                  <Form.Label>Content</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    row="10"
+                    type="text"
+                    placeholder="Content"
+                    onChange={this.handleChange}
+                    defaultValue={post.content}
                   />
                 </Form.Group>
                 <Button variant="dark" type="submit">
