@@ -1,4 +1,4 @@
-export const addPost = post => {
+export const addPost = (post) => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
 
@@ -13,9 +13,9 @@ export const addPost = post => {
 
     if (post.tags) {
       let tagSet = new Set();
-      post.tags = post.tags.replace(/\s/g, "").split(",");
+      post.tags = post.tags.split(",");
 
-      post.tags.forEach(tag => {
+      post.tags.forEach((tag) => {
         if (!tagSet.has(tag)) {
           tagSet.add(tag);
         }
@@ -25,7 +25,7 @@ export const addPost = post => {
     }
 
     if (post.helpers) {
-      post.helpers = post.helpers.replace(/\s/g, "").split(",");
+      post.helpers = post.helpers.split(",");
     }
 
     const postObj = {
@@ -33,7 +33,7 @@ export const addPost = post => {
       snippet: snippet,
       path: postPath,
       created_at: createdAt,
-      date: date
+      date: date,
     };
 
     try {
@@ -48,7 +48,7 @@ export const addPost = post => {
   };
 };
 
-export const updatePost = post => {
+export const updatePost = (post) => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
 
@@ -62,13 +62,11 @@ export const updatePost = post => {
         .join(" ") + "...";
 
     if (typeof updatedPostObj.tags == "string") {
-      updatedPostObj.tags = updatedPostObj.tags.replace(/\s/g, "").split(",");
+      updatedPostObj.tags = updatedPostObj.tags.split(",");
     }
 
     if (typeof updatedPostObj.helpers == "string") {
-      updatedPostObj.helpers = updatedPostObj.helpers
-        .replace(/\s/g, "")
-        .split(",");
+      updatedPostObj.helpers = updatedPostObj.helpers.split(",");
     }
 
     updatedPostObj.edited_at = firestore.Timestamp.fromDate(
@@ -84,7 +82,7 @@ export const updatePost = post => {
   };
 };
 
-export const destroyPost = post => {
+export const destroyPost = (post) => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
 
