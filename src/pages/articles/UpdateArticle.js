@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 import { updateArticle } from "../../store/actions/articleActions";
 
@@ -55,124 +60,100 @@ class UpdateArticle extends Component {
 
     if (article) {
       return (
-        <div className="container">
-          <form onSubmit={this.handleSubmit} className="white">
-            <h5 className="grey-text text-darken-3">Update Article</h5>
-            <div className="entity-path-input input-field">
-              <input disabled type="text" id="id" value={article.id} />
-            </div>
-            <div className="input-field">
-              <label htmlFor="link" className="active">
-                Link
-              </label>
-              <input
-                type="text"
-                id="link"
-                onChange={this.handleChange}
-                defaultValue={article.link}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="title" className="active">
-                Title
-              </label>
-              <input
-                type="text"
-                id="title"
-                onChange={this.handleChange}
-                defaultValue={article.title}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="author_first_name" className="active">
-                Author's First Name
-              </label>
-              <input
-                type="text"
-                id="author_first_name"
-                onChange={this.handleChange}
-                defaultValue={article.author_first_name}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="author_last_name" className="active">
-                Author's Last Name
-              </label>
-              <input
-                type="text"
-                id="author_last_name"
-                onChange={this.handleChange}
-                defaultValue={article.author_last_name}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="website" className="active">
-                Website
-              </label>
-              <input
-                type="text"
-                id="website"
-                onChange={this.handleChange}
-                defaultValue={article.website}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="publisher" className="active">
-                Publisher
-              </label>
-              <input
-                type="text"
-                id="publisher"
-                onChange={this.handleChange}
-                defaultValue={article.publisher}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="publication_date" className="active">
-                Publication Date
-              </label>
-              <input
-                type="text"
-                id="publication_date"
-                onChange={this.handleChange}
-                defaultValue={article.publication_date}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="description" className="active">
-                Description
-              </label>
-              <textarea
-                id="description"
-                onChange={this.handleChange}
-                className="materialize-textarea"
-                defaultValue={article.description}
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="tags" className="active">
-                Tags (separate w/ commas)
-              </label>
-              <input
-                type="text"
-                id="tags"
-                onChange={this.handleChange}
-                defaultValue={article.tags}
-              />
-            </div>
-            <div className="input-field">
-              <button className="btn black lighten-1 z-depth-0 ">
-                Update<i className="material-icons right">send</i>
-              </button>
-            </div>
-          </form>
-        </div>
+        <Container>
+          <br></br>
+          <Row>
+            <Col>
+              <Form onSubmit={this.handleSubmit}>
+                <h4>Update Article</h4>
+                <Form.Group controlId="link">
+                  <Form.Label>Link</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={this.handleChange}
+                    defaultValue={article.link}
+                    required
+                  />
+                </Form.Group>
+                <Form.Group controlId="title">
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={this.handleChange}
+                    defaultValue={article.title}
+                  />
+                </Form.Group>
+                <Form.Group controlId="author_first_name">
+                  <Form.Label>Author's First Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={this.handleChange}
+                    defaultValue={article.author_first_name}
+                  />
+                </Form.Group>
+                <Form.Group controlId="author_last_name">
+                  <Form.Label>Author's Last Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={this.handleChange}
+                    defaultValue={article.author_last_name}
+                  />
+                </Form.Group>
+                <Form.Group controlId="website">
+                  <Form.Label>Website</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={this.handleChange}
+                    defaultValue={article.website}
+                  />
+                </Form.Group>
+                <Form.Group controlId="publisher">
+                  <Form.Label>Publisher</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={this.handleChange}
+                    defaultValue={article.publisher}
+                  />
+                </Form.Group>
+                <Form.Group controlId="publication_date">
+                  <Form.Label>Publication Date</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={this.handleChange}
+                    defaultValue={article.publication_date}
+                  />
+                </Form.Group>
+                <Form.Group controlId="description">
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={this.handleChange}
+                    defaultValue={article.description}
+                  />
+                </Form.Group>
+                <Form.Group controlId="tags">
+                  <Form.Label>Tags (separate w/ commas)</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={this.handleChange}
+                    defaultValue={article.tags}
+                  />
+                </Form.Group>
+                <Button variant="dark" type="submit">
+                  Update Article
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+        </Container>
       );
     } else {
       return (
-        <div className="container center">
-          <p>Loading article...</p>
-        </div>
+        <Container>
+          <Row>
+            <Col>Loading article...</Col>
+          </Row>
+        </Container>
       );
     }
   }

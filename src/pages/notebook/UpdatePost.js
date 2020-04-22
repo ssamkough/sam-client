@@ -60,7 +60,6 @@ class UpdatePost extends Component {
                   <Form.Label>Path</Form.Label>
                   <Form.Control disabled value={post.path} />
                 </Form.Group>
-
                 <Form.Group controlId="title">
                   <Form.Label>Title</Form.Label>
                   <Form.Control disabled value={post.title} />

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 import { addPerson } from "../../store/actions/personActions";
 
@@ -29,37 +34,44 @@ class AddPerson extends Component {
     }
 
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Add Person</h5>
-          <div className="input-field">
-            <label htmlFor="first_name">First Name</label>
-            <input type="text" id="first_name" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="last_name">Last Name</label>
-            <input type="text" id="last_name" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="link">Link</label>
-            <input type="text" id="link" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="description">Description</label>
-            <textarea
-              id="description"
-              onChange={this.handleChange}
-              maxLength="400"
-              className="materialize-textarea"
-            />
-          </div>
-          <div className="input-field">
-            <button className="btn black lighten-1 z-depth-0 ">
-              Add<i className="material-icons right">send</i>
-            </button>
-          </div>
-        </form>
-      </div>
+      <Container>
+        <br></br>
+        <Row>
+          <Col>
+            <Form onSubmit={this.handleSubmit}>
+              <h4>Add Project</h4>
+              <Form.Group controlId="first_name">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  onChange={this.handleChange}
+                  required
+                />
+              </Form.Group>
+              <Form.Group controlId="last_name">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group controlId="link">
+                <Form.Label>Link</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group controlId="description">
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows="2"
+                  type="text"
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              <Button variant="dark" type="submit">
+                Add Project
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

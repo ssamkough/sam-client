@@ -44,7 +44,6 @@ class AddPost extends Component {
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Title"
                   onChange={this.handleChange}
                   required
                 />

@@ -16,9 +16,9 @@ const ProjectList = ({ projects }) => {
       {projects &&
         projects.map(project => {
           return (
-            <Row>
-              <Col>
-                <ProjectSummary project={project} key={project.id} /> <br />{" "}
+            <Row key={project.path}>
+              <Col key={project.path}>
+                <ProjectSummary key={project.path} project={project} /> <br />{" "}
               </Col>
             </Row>
           );
