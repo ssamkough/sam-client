@@ -14,14 +14,14 @@ class AddPost extends Component {
     title: "",
     content: "",
     helpers: "",
-    tags: ""
+    tags: "",
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.addPost(this.state);
     this.props.history.push("/notebook");
@@ -49,28 +49,33 @@ class AddPost extends Component {
                   required
                 />
               </Form.Group>
-
-              <Form.Group controlId="content">
-                <Form.Label>Content</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Content"
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
               <Form.Group controlId="helpers">
-                <Form.Label>Helpers</Form.Label>
+                <Form.Label>
+                  Helpers (separate w/ commas (don't put spaces))
+                </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Helpers (separate w/ commas)"
+                  placeholder="Helpers (separate w/ commas (don't put spaces))"
                   onChange={this.handleChange}
                 />
               </Form.Group>
               <Form.Group controlId="tags">
-                <Form.Label>Tags</Form.Label>
+                <Form.Label>
+                  Tags (separate w/ commas (don't put spaces))
+                </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Tags (separate w/ commas)"
+                  placeholder="Tags (separate w/ commas (don't put spaces))"
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="content">
+                <Form.Label>Content</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows="10"
+                  type="text"
+                  placeholder="Content"
                   onChange={this.handleChange}
                 />
               </Form.Group>
@@ -85,15 +90,15 @@ class AddPost extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    addPost: post => dispatch(addPost(post))
+    addPost: (post) => dispatch(addPost(post)),
   };
 };
 

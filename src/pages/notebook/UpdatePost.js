@@ -17,14 +17,14 @@ class UpdatePost extends Component {
     title: "",
     content: "",
     helpers: "",
-    tags: ""
+    tags: "",
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.updatePost(this.state);
     this.props.history.push("/notebook");
@@ -37,7 +37,7 @@ class UpdatePost extends Component {
         title: props.post.title,
         content: props.post.content,
         helpers: props.post.helpers,
-        tags: props.post.tags
+        tags: props.post.tags,
       }));
     }
   }
@@ -76,19 +76,23 @@ class UpdatePost extends Component {
                   />
                 </Form.Group>
                 <Form.Group controlId="helpers">
-                  <Form.Label>Helpers</Form.Label>
+                  <Form.Label>
+                    Helpers (separate w/ commas (don't put spaces))
+                  </Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Helpers (separate w/ commas)"
+                    placeholder="Helpers (separate w/ commas (don't put spaces))"
                     onChange={this.handleChange}
                     defaultValue={post.helpers}
                   />
                 </Form.Group>
                 <Form.Group controlId="tags">
-                  <Form.Label>Tags</Form.Label>
+                  <Form.Label>
+                    Tags (separate w/ commas (don't put spaces))
+                  </Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Tags (separate w/ commas)"
+                    placeholder="Tags (separate w/ commas (don't put spaces))"
                     onChange={this.handleChange}
                     defaultValue={post.tags}
                   />
@@ -120,13 +124,13 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     post: post,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    updatePost: post => dispatch(updatePost(post))
+    updatePost: (post) => dispatch(updatePost(post)),
   };
 };
 
