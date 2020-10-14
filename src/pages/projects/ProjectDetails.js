@@ -21,6 +21,7 @@ const ProjectDetails = props => {
           <Col md={8}>
             <h3>{project.title}</h3>
             <div>{project.content}</div>
+            <div>{project.url}</div>
             <hr />
             <div>
               {project.tags &&

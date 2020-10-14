@@ -13,6 +13,7 @@ class AddProject extends Component {
   state = {
     title: "",
     content: "",
+    url: "",
     tags: ""
   };
 
@@ -49,6 +50,10 @@ class AddProject extends Component {
               </Form.Group>
               <Form.Group controlId="content">
                 <Form.Label>Content</Form.Label>
+                <Form.Control type="text" onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group controlId="url">
+                <Form.Label>URL</Form.Label>
                 <Form.Control type="text" onChange={this.handleChange} />
               </Form.Group>
               <Form.Group controlId="tags">

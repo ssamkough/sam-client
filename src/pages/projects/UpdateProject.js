@@ -16,6 +16,7 @@ class UpdateProject extends Component {
     path: "",
     title: "",
     content: "",
+    url: "",
     tags: ""
   };
 
@@ -35,6 +36,7 @@ class UpdateProject extends Component {
         path: props.project.path,
         title: props.project.title,
         content: props.project.content,
+        url: props.project.url,
         tags: props.project.tags
       }));
     }
@@ -68,6 +70,14 @@ class UpdateProject extends Component {
                     type="text"
                     onChange={this.handleChange}
                     defaultValue={project.content}
+                  />
+                </Form.Group>
+                <Form.Group controlId="url">
+                  <Form.Label>URL</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={this.handleChange}
+                    defaultValue={project.url}
                   />
                 </Form.Group>
                 <Form.Group controlId="tags">
