@@ -1,8 +1,10 @@
-export const addService = service => {
+export const addService = (service) => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
+    console.log("SERV", service);
 
-    const servicePath = service.title.replace(/\s+/g, "-").toLowerCase();
+    let servicePath = service.title.replace(/\s+/g, "-").toLowerCase();
+    servicePath = servicePath.replace("/", "_");
     const createdAt = firestore.Timestamp.fromDate(new Date()).toDate();
     const date = createdAt.toDateString();
     const snippet =
@@ -15,7 +17,7 @@ export const addService = service => {
       let tagSet = new Set();
       service.tags = service.tags.split(/s*[,]s*/);
 
-      service.tags.forEach(tag => {
+      service.tags.forEach((tag) => {
         if (!tagSet.has(tag)) {
           tagSet.add(tag);
         }
@@ -29,7 +31,7 @@ export const addService = service => {
       path: servicePath,
       snippet: snippet,
       created_at: createdAt,
-      date: date
+      date: date,
     };
 
     try {
@@ -44,7 +46,7 @@ export const addService = service => {
   };
 };
 
-export const updateService = service => {
+export const updateService = (service) => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
 
@@ -76,7 +78,7 @@ export const updateService = service => {
   };
 };
 
-export const destroyService = service => {
+export const destroyService = (service) => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
 
